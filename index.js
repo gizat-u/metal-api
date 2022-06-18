@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(CookieParser());
 app.use(cors());
 
-// need to turn off erros
+// need to turn off erros on production
 
 // routes
 app.use('/api', UserRoute);
