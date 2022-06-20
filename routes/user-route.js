@@ -1,8 +1,11 @@
 const Router = require('express').Router;
-const UserController = require('../controllers/user-controller');
-const { body } = require('express-validator');
-
 const router = new Router();
+
+const { body } = require('express-validator');
+const AuthMiddleware = require('../middlewares/auth-middleware');
+
+const UserController = require('../controllers/user-controller');
+
 
 router.post("/signup",
 	body('email').isEmail(),
@@ -13,6 +16,6 @@ router.post("/logout", UserController.Logout);
 
 router.get("/activate/:link", UserController.Activate);
 router.get("/refresh", UserController.Refresh);
-router.get("/users", UserController.GetAllUsers);
+router.get("/users", AuthMiddleware, UserController.GetAllUsers);
 
 module.exports = router;
