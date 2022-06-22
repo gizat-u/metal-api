@@ -13,10 +13,12 @@ const app = express();
 // use
 app.use(express.json());
 app.use(CookieParser());
-app.use(cors({
-	credentials: true,
-	origin: process.env.CLIENT_URL,
-}));
+app.use(cors(
+	// 	{
+	// 	credentials: true,
+	// 	origin: process.env.CLIENT_URL,
+	// }
+));
 
 // need to turn off erros on production
 
